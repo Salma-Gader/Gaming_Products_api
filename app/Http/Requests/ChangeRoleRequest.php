@@ -4,12 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTagRequest extends FormRequest
+class ChangeRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -17,12 +19,12 @@ class StoreTagRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, mixed>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|unique:tags|max:255',
+            'role_ids' => 'required|array',
         ];
     }
 }
